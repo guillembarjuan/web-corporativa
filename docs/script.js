@@ -1,14 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    // --- Gestió del Formulari de Contacte ---
+    // --- 1. Gestió del Formulari de Contacte ---
     const contactForm = document.getElementById("contactForm");
 
     if (contactForm) {
         contactForm.addEventListener("submit", function(event) {
-            // Evitem que el formulari s'enviï realment i recarregui la pàgina
-            event.preventDefault();
+            event.preventDefault(); // Evitem que recarregui la pàgina
 
-            // Recollim les dades
             const formData = new FormData(contactForm);
             const nom = formData.get("nom");
             const privacyAccept = formData.get("privacyConsent");
@@ -18,67 +16,70 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            // Simulem l'enviament mostrant un missatge d'èxit corporatiu
-            alert(`Gràcies, ${nom}. La teva consulta s'ha enviat correctament a FoodLogístic S.A. Ens posarem en contacte amb tu ben aviat per gestionar la teva distribució alimentària.`);
-
-            // Netegem el formulari
+            alert(`Gràcies, ${nom}. La teva consulta s'ha enviat correctament a FoodLogístic S.A.`);
             contactForm.reset();
         });
     }
 
-    // --- Gestió del Banner de Cookies ---
+    // --- 2. Gestió del Banner de Cookies ---
     const cookieBanner = document.getElementById("cookieBanner");
     const acceptCookiesBtn = document.getElementById("acceptCookies");
     const rejectCookiesBtn = document.getElementById("rejectCookies");
 
-    // Funció per amagar el banner
-    const hideCookieBanner = () => {
-        cookieBanner.classList.add("hidden");
-        // Donem temps a l'animació i després amaguem per l'accessibilitat
-        setTimeout(() => {
-            cookieBanner.style.display = "none";
-        }, 500); 
-    }
+    // Comprovem de forma segura que els elements existeixen a l'HTML
+    if (cookieBanner && acceptCookiesBtn && rejectCookiesBtn) {
+        
+        // Mirem si l'usuari ja havia escollit una opció anteriorment
+        const consentimentGuardat = localStorage.getItem("cookieConsent");
 
-    // Comprovem si l'usuari ha interactuat abans
-    const checkCookieConsent = () => {
-        if (!localStorage.getItem("cookieConsent")) {
-            // Mostrem el banner si no hi ha interacció prèvia
-            // Assegurem que l'accessibilitat sigui correcta abans de treure el hidden
+        if (!consentimentGuardat) {
+            // Si és la primera vegada, mostrem el banner
             cookieBanner.style.display = "block";
-            // Petit delay per a l'animació inicial (no necessari si usem hidden/display)
-             setTimeout(() => {
+            // Un petit retard perquè l'animació CSS de pujada funcioni bé
+            setTimeout(() => {
                 cookieBanner.classList.remove("hidden");
             }, 50);
         } else {
-            // Amaguem el banner per display: none per accessibilitat
+            // Si ja va acceptar/rebutjar abans, l'amaguem completament
             cookieBanner.style.display = "none";
         }
+
+        // Funció per amagar el banner amb animació
+        const amagarBanner = () => {
+            cookieBanner.classList.add("hidden"); // Activa l'animació de baixar
+            setTimeout(() => {
+                cookieBanner.style.display = "none"; // L'amaga de la pantalla després de mig segon
+            }, 500);
+        };
+
+        // Acció en fer clic a "Acceptar totes"
+        acceptCookiesBtn.addEventListener("click", () => {
+            console.log("Cookies acceptades!"); // Ho veuràs a la consola (F12)
+            localStorage.setItem("cookieConsent", "accepted");
+            amagarBanner();
+            // Aquí s'activaria el codi de StatCounter en la realitat
+        });
+
+        // Acció en fer clic a "Rebutjar-ne algunes"
+        rejectCookiesBtn.addEventListener("click", () => {
+            console.log("Cookies rebutjades!"); // Ho veuràs a la consola (F12)
+            localStorage.setItem("cookieConsent", "rejected");
+            amagarBanner();
+        });
+
+    } else {
+        console.error("AVÍS: No s'han trobat els botons o el banner de cookies a l'HTML. Revisa els IDs.");
     }
 
-    checkCookieConsent();
-
-    acceptCookiesBtn.addEventListener("click", () => {
-        // Guardem preferència d'acceptació
-        localStorage.setItem("cookieConsent", "accepted");
-        hideCookieBanner();
-        // Aquí s'activaria l'analítica respectuosa real (com el comptador invisible real de StatCounter)
-        // activariemRealStatCounter();
-    });
-
-    rejectCookiesBtn.addEventListener("click", () => {
-        // Guardem preferència de rebutj, l'analítica no s'executaria o ho faria parcialment
-        localStorage.setItem("cookieConsent", "rejected");
-        hideCookieBanner();
-    });
-
-    // --- Efecte de desplaçament suau (smooth scroll) per als enllaços del menú ---
+    // --- 3. Efecte de desplaçament suau (smooth scroll) ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if(targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
         });
     });
 });
