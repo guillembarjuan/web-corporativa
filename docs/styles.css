@@ -1,4 +1,4 @@
-/* Variables de color extretes del logo */
+/* Variables de color extretes del logo i la temàtica */
 :root {
     --primary-blue: #1b4b74;
     --primary-green: #68a94a;
@@ -6,6 +6,7 @@
     --text-dark: #333333;
     --text-light: #ffffff;
     --border-color: #dddddd;
+    --cookie-banner-bg: rgba(255, 255, 255, 0.95);
 }
 
 /* Reset bàsic */
@@ -20,6 +21,7 @@ body {
     color: var(--text-dark);
     line-height: 1.6;
     background-color: var(--text-light);
+    position: relative; /* Per al banner de cookies fixed */
 }
 
 .container {
@@ -66,7 +68,7 @@ header {
     color: var(--primary-green);
 }
 
-/* Botons */
+/* Botons globals */
 .btn {
     display: inline-block;
     padding: 12px 25px;
@@ -109,25 +111,31 @@ h2 {
     font-size: 2.5rem;
 }
 
-/* Hero Section (Inici) */
+/* Hero Section (Inici, AMB IMATGE DE FONS) */
 .hero {
-    background-color: var(--light-bg);
+    background-image: url('images/hero-bg.jpg'); /* La imatge descriptor és un magatzem logístic modern i refrigerat */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     text-align: center;
     padding: 120px 20px;
     border-bottom: 5px solid var(--primary-green);
+    color: var(--text-light); /* Canviem a text clar per contrast */
 }
 
 .hero h1 {
     font-size: 3rem;
-    color: var(--primary-blue);
+    color: var(--text-light);
     margin-bottom: 20px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7); /* Afegim ombra per a contrast del títol */
 }
 
 .hero p {
     font-size: 1.2rem;
     max-width: 800px;
     margin: 0 auto 30px;
-    color: #555;
+    color: var(--text-light);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); /* Afegim ombra per a contrast del text */
 }
 
 /* Serveis */
@@ -178,7 +186,7 @@ h2 {
     font-size: 1.1rem;
 }
 
-/* Contacte */
+/* Contacte (amb privacitat) */
 .contact {
     background-color: var(--light-bg);
 }
@@ -225,11 +233,88 @@ h2 {
     border-color: var(--primary-green);
 }
 
-.privacy-notice {
-    font-size: 0.8rem;
+.privacy-acceptance {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.privacy-acceptance input {
+    width: auto;
+    margin-top: 5px;
+}
+
+.privacy-acceptance label {
+    font-size: 0.85rem;
     color: #777;
-    margin-bottom: 15px;
+    margin-bottom: 0;
+}
+
+.privacy-acceptance label a {
+    color: var(--primary-green);
+    text-decoration: none;
+}
+
+/* Banner de Cookies (nou) */
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--cookie-banner-bg);
+    color: var(--text-dark);
+    padding: 20px 0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 2000;
+    transition: transform 0.5s ease-in-out;
+}
+
+.cookie-banner.hidden {
+    transform: translateY(100%);
+}
+
+.cookie-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
     text-align: center;
+}
+
+.cookie-content p {
+    font-size: 0.9rem;
+    max-width: 800px;
+}
+
+.cookie-content p a {
+    color: var(--primary-green);
+    text-decoration: none;
+}
+
+.cookie-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-cookie-accept {
+    background-color: var(--primary-green);
+    color: var(--text-light);
+}
+
+.btn-cookie-accept:hover {
+    background-color: #558c3c;
+}
+
+.btn-cookie-reject {
+    background-color: var(--text-light);
+    color: var(--primary-blue);
+    border: 2px solid var(--primary-blue);
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.btn-cookie-reject:hover {
+    background-color: #e6f0f7;
 }
 
 /* Footer */
@@ -239,6 +324,7 @@ footer {
     text-align: center;
     padding: 20px 0;
     font-size: 0.9rem;
+    padding-bottom: 80px; /* Afegim padding per al banner de cookies */
 }
 
 /* Responsive */

@@ -98,7 +98,10 @@
                             <label for="missatge">Missatge *</label>
                             <textarea id="missatge" name="missatge" rows="4" required></textarea>
                         </div>
-                        <p class="privacy-notice">Complim amb la LOPDGDD i LSSI-CE. Les teves dades estan segures.</p>
+                        <div class="form-group privacy-acceptance">
+                            <input type="checkbox" id="privacyConsent" name="privacyConsent" required>
+                            <label for="privacyConsent">Accepto la <a href="#" target="_blank">política de privacitat</a> i l'ús de les meves dades per complir amb la normativa LOPDGDD i LSSI-CE. *</label>
+                        </div>
                         <button type="submit" class="btn btn-secondary">Enviar Missatge</button>
                     </form>
                 </div>
@@ -112,10 +115,22 @@
         </div>
     </footer>
 
+    <div id="cookieBanner" class="cookie-banner hidden">
+        <div class="container cookie-content">
+            <p>Utilitzem cookies pròpies i de tercers per analitzar el nostre trànsit i millorar la teva experiència. Pots acceptar totes les cookies o configurar les teves preferències a la nostra <a href="#" target="_blank">política de cookies</a>.</p>
+            <div class="cookie-buttons">
+                <button id="acceptCookies" class="btn btn-cookie-accept">Acceptar totes</button>
+                <button id="rejectCookies" class="btn btn-cookie-reject">Rebutjar-ne algunes</button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 
     <script type="text/javascript">
-        // ATENCIÓ: Posa aquí el codi de Statcounter que has generat!
+        // ATENCIÓ: El script de Statcounter real s'hauria de posar aquí,
+        // assegurant-te que s'executa correctament després que l'usuari interaccioni
+        // amb el banner de cookies per a una analítica respectuosa.
     </script>
     <noscript>
         </noscript>
