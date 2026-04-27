@@ -11,7 +11,7 @@
     <header>
         <div class="container header-container">
             <a href="#inici" class="logo-link">
-                <img src="images/FoodLogisticLogo.png" alt="Logotip FoodLogístic S.A." class="logo" width="81" height="60" fetchpriority="high">
+                <img src="images/FoodLogisticLogo.png" alt="Logotip FoodLogístic S.A." class="logo">
             </a>
             <nav>
                 <ul class="nav-links">
@@ -33,6 +33,41 @@
             </div>
         </section>
 
+        <section id="serveis" class="services">
+            <div class="container">
+                <h2>Els nostres serveis</h2>
+                <div class="grid-services">
+                    <div class="card">
+                        <h3>Transport Refrigerat</h3>
+                        <p>Garantim la cadena de fred ininterrompuda gràcies a la nostra flota de vehicles d'última generació.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Emmagatzematge Intel·ligent</h3>
+                        <p>Instal·lacions adaptades amb control de temperatura i estoc a temps real per a una gestió òptima.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Distribució Nacional</h3>
+                        <p>Rutes diàries optimitzades que asseguren l'entrega puntual a qualsevol punt del país.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre-nosaltres" class="about">
+            <div class="container about-content">
+                <div class="about-text">
+                    <h2>Sobre FoodLogístic S.A.</h2>
+                    <p>Amb seu a <strong>Mataró</strong>, FoodLogístic S.A. ha experimentat un creixement exponencial gràcies a la confiança dels nostres clients. Som un equip de 35 professionals dedicats a optimitzar la cadena de subministrament alimentari.</p>
+                    <p>La nostra nova infraestructura ens permet fer front a les exigències del mercat actual, garantint la seguretat i continuïtat del teu negoci.</p>
+                    <ul class="company-data">
+                        <li><strong>Facturació:</strong> 25 milions d'euros (darrer any)</li>
+                        <li><strong>Equip:</strong> 35 treballadors altament qualificats</li>
+                        <li><strong>Cobertura:</strong> Àmbit Nacional</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
         <section id="contacte" class="contact">
             <div class="container">
                 <h2>Contacta amb nosaltres</h2>
@@ -43,7 +78,7 @@
                         <p><strong>NIF:</strong> A-12345678</p>
                         <p><strong>Adreça:</strong> Carrer de la Teixidora, núm. 13, 08302 Mataró, Barcelona</p>
                         <p><strong>Telèfon:</strong> +34 935 55 55 55</p>
-                        <p><strong>Correu electrònic:</strong> <a href="mailto:info@foodlogistic.com" style="color: var(--primary-blue); font-weight: bold;">info@foodlogistic.com</a></p>
+                        <p><strong>Correu electrònic:</strong> <a href="mailto:info@foodlogistic.com">info@foodlogistic.com</a></p>
                     </div>
                     
                     <form id="contactForm" class="contact-form">
@@ -66,7 +101,12 @@
 
                         <div class="form-group privacy-acceptance">
                             <input type="checkbox" id="privacyConsent" name="privacyConsent" required>
-                            <label for="privacyConsent">He llegit i accepto la <a href="privacitat.html" target="_blank" style="color: var(--primary-blue); text-decoration: underline;">política de privacitat</a>. *</label>
+                            <label for="privacyConsent">He llegit i accepto la <a href="privacitat.html" target="_blank">política de privacitat</a> per al tractament de les meves dades. *</label>
+                        </div>
+
+                        <div class="form-group privacy-acceptance">
+                            <input type="checkbox" id="commsConsent" name="commsConsent">
+                            <label for="commsConsent">Autoritzo l'enviament de comunicacions comercials segons s'indica a l'<a href="avis-legal.html" target="_blank">avís legal</a>.</label>
                         </div>
 
                         <button type="submit" class="btn btn-secondary">Enviar Missatge</button>
@@ -78,7 +118,7 @@
 
     <footer>
         <div class="container footer-content">
-            <p>&copy; 2026 FoodLogístic S.A. Tots els drets reservats.</p>
+            <p>&copy; 2026 FoodLogístic S.A. Tots els drets reservats. | Inscrita al Registre Mercantil de Barcelona, Tom 45678, Foli 120, Full B-567890, Inscripció 1a.</p>
             <div class="legal-links">
                 <a href="avis-legal.html">Avís Legal</a> | 
                 <a href="privacitat.html">Política de Privacitat</a> | 
@@ -87,6 +127,31 @@
         </div>
     </footer>
 
+    <div id="cookieBanner" class="cookie-banner hidden">
+        <div class="container cookie-content">
+            <p>Utilitzem cookies pròpies i de tercers per analitzar el nostre trànsit i millorar la teva experiència. Pots acceptar totes les cookies o configurar les teves preferències a la nostra <a href="cookies.html" target="_blank">política de cookies</a>.</p>
+            <div class="cookie-buttons">
+                <button id="acceptCookies" class="btn btn-cookie-accept">Acceptar totes</button>
+                <button id="rejectCookies" class="btn btn-cookie-reject">Rebutjar-ne algunes</button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
-</body>
+
+    <script type="text/javascript">
+    var sc_project=13222724; 
+    var sc_invisible=1; 
+    var sc_security="15d4a889"; 
+    </script>
+    <script type="text/javascript"
+    src="https://www.statcounter.com/counter/counter.js"
+    async></script>
+    <noscript><div class="statcounter"><a title="Web Analytics
+    Made Easy - Statcounter" href="https://statcounter.com/"
+    target="_blank"><img class="statcounter"
+    src="https://c.statcounter.com/13222724/0/15d4a889/1/"
+    alt="Web Analytics Made Easy - Statcounter"
+    referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+    </body>
 </html>
