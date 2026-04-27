@@ -111,23 +111,24 @@ h2 {
     font-size: 2.5rem;
 }
 
-/* Hero Section (Inici, AMB IMATGE DE FONS) */
+/* ========== MODIFICACIÓ 1: Millora del contrast a Hero ========== */
 .hero {
-    background-image: url('images/hero-bg.jpg'); /* La imatge descriptor és un magatzem logístic modern i refrigerat */
+    /* Abans: background-image: url('images/hero-bg.jpg'); */
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/hero-bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     text-align: center;
     padding: 120px 20px;
     border-bottom: 5px solid var(--primary-green);
-    color: var(--text-light); /* Canviem a text clar per contrast */
+    color: var(--text-light);
 }
 
 .hero h1 {
     font-size: 3rem;
     color: var(--text-light);
     margin-bottom: 20px;
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7); /* Afegim ombra per a contrast del títol */
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8); /* reforçat */
 }
 
 .hero p {
@@ -135,8 +136,9 @@ h2 {
     max-width: 800px;
     margin: 0 auto 30px;
     color: var(--text-light);
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); /* Afegim ombra per a contrast del text */
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7); /* reforçat */
 }
+/* =============================================================== */
 
 /* Serveis */
 .grid-services {
@@ -392,3 +394,63 @@ footer {
 .legal-links a:hover {
     color: var(--primary-green);
 }
+
+/* ========== MODIFICACIÓ 2: Enllaços subratllats (millora accessibilitat) ========== */
+/* Tots els enllaços, per defecte, han de tenir subratllat */
+a {
+    text-decoration: underline;
+}
+
+/* Els botons no han de tenir subratllat (són elements interactius amb estil propi) */
+.btn,
+.btn-primary,
+.btn-secondary,
+.btn-cookie-accept,
+.btn-cookie-reject {
+    text-decoration: none;
+}
+
+/* Enllaços del menú de navegació: mantenim subratllat només en :hover? 
+   Però per a accessibilitat, els deixem subratllats sempre que no siguin botons */
+.nav-links a {
+    text-decoration: underline;
+}
+
+/* Enllaços dins del footer legal */
+.legal-links a {
+    text-decoration: underline;
+}
+
+/* Enllaços del peu de pàgina general */
+footer a {
+    text-decoration: underline;
+    color: #dddddd;
+}
+footer a:hover {
+    color: var(--primary-green);
+}
+/* =================================================================== */
+
+/* ========== MODIFICACIÓ 3: Indicador de focus visible per a navegació amb teclat ========== */
+/* Per a qualsevol element interactiu */
+:focus {
+    outline: 3px solid var(--primary-green);
+    outline-offset: 2px;
+}
+
+/* Per a botons i enllaços, un estil addicional */
+button:focus-visible,
+a:focus-visible,
+.btn:focus-visible {
+    outline: 3px solid var(--primary-green);
+    outline-offset: 2px;
+    background-color: rgba(104, 169, 74, 0.1); /* lleuger fons verdós */
+}
+
+/* Opció per als inputs del formulari */
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--primary-green);
+    outline-offset: 2px;
+}
+/* ==================================================================================== */
